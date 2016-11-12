@@ -5,26 +5,31 @@ import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import java.util.Date;
 
 /**
- * описание авто
+ * заявка на аренду
  *
  * @author Eugene Tsydzik
  * @since 12.11.16.
  */
 @Entity
 @Data
-public class Auto {
+public class Application {
+
     @Id
     @GeneratedValue
     private Long id;
 
-    private String model;
+    private Date startTime;
 
-    private Integer manufactureDate;
+    private Date endTime;
 
-    private String autoNumber;
+    @ManyToOne
+    private User user;
 
-    private Double enginePower;
+    @ManyToOne
+    private Auto auto;
 
 }

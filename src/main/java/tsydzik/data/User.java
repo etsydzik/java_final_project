@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 /**
+ * тот, кто берёт машину в аренду
+ *
  * @author Eugene Tsydzik
  * @since 12.11.16.
  */
@@ -19,4 +21,7 @@ public class User {
 
     private String name;
 
+    private String login;
+
+    private String password;
 }
