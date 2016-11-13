@@ -30,6 +30,6 @@ public class Application {
     private User user;
 
     @ManyToOne
-    private Auto auto;
+    private Car car;
 
 }

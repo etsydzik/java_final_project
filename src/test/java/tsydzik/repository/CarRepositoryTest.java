@@ -13,14 +13,14 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class AutoRepositoryTest {
+public class CarRepositoryTest {
 
     @Autowired
-    private AutoRepository autoRepository;
+    private CarRepository carRepository;
 
     @Test
     public void testHasAuto() {
-        Assertions.assertThat(autoRepository.findAll()).isNotEmpty();
+        Assertions.assertThat(carRepository.findAll()).isNotEmpty();
     }
 
 }

@@ -14,7 +14,7 @@ import javax.persistence.Id;
  */
 @Entity
 @Data
-public class Auto {
+public class Car {
     @Id
     @GeneratedValue
     private Long id;
@@ -23,7 +23,7 @@ public class Auto {
 
     private Integer manufactureDate;
 
-    private String autoNumber;
+    private String carNumber;
 
     private Double enginePower;
 
