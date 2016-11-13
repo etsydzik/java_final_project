@@ -29,9 +29,9 @@ public class RegisterController {
                            @RequestParam String password) {
         try {
             userService.createUser(name, login, password);
-            return "application";
+            return "redirect:application";
         } catch (UserExistsException e) {
-            return "register";
+            return "redirect:register";
         }
     }
 }

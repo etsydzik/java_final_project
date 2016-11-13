@@ -44,5 +44,22 @@ public class UserRepositoryTest {
     public void testIfUserNotExist() {
         Assertions.assertThat(userRepository.loginExists("asdf")).isFalse();
     }
+
+    @Test
+    public void testFindByLoginAndPassword() {
+        User user = userRepository.findByLoginAndPassword("tyger", "2222");
+        User expectedUser = new User();
+        expectedUser.setId(1L);
+        expectedUser.setName("eugene");
+        expectedUser.setLogin("tyger");
+        expectedUser.setPassword("2222");
+        Assertions.assertThat(user).isEqualTo(expectedUser);
+    }
+
+    @Test
+    public void testNotFindByLoginAndPassword() {
+        User user = userRepository.findByLoginAndPassword("aaaaa", "aaaaa");
+        Assertions.assertThat(user).isNull();
+    }
 }
 
