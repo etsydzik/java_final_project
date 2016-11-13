@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"/>
@@ -11,57 +11,31 @@
 
 <a href="/logout" class="btn btn-primary">Logout</a>
 
-<form class="form-horizontal" action="/applications" method="post">
-
-    aksdjfhaljsdfkajsd
-
-
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="modelAuto">Model auto</label>
-        <div class="col-md-4">
-            <input id="modelAuto" name="modelAuto" type="text" placeholder="Model auto" class="form-control input-md"/>
-            <span class="help-block">Enter the desired model auto</span>
-        </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="manufactureDate">Manufacture date</label>
-        <div class="col-md-4">
-            <input id="manufactureDate" name="manufactureDate" type="text" placeholder="Manufacture date"
-                   class="form-control input-md" required=""/>
-            <span class="help-block">Enter the desired manufacture date</span>
-        </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="enginePower">Engine power</label>
-        <div class="col-md-4">
-            <input id="enginePower" name="enginePower" type="text" placeholder="Engine power"
-                   class="form-control input-md" required=""/>
-            <span class="help-block">Enter the desired engine power</span>
-        </div>
-    </div>
-
-    <!-- Text input-->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="exploitationTime">Exploitation time</label>
-        <div class="col-md-4">
-            <input id="exploitationTime" type="date" name="exploitationTime" min="2016-11-15"/>
-            <span class="help-block">Enter exploitation time</span>
-        </div>
-    </div>
-
-    <!-- Button -->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="submitApplication"></label>
-        <div class="col-md-4">
-            <button id="submitApplication" name="submitApplication" class="btn btn-primary">Submit application
-            </button>
-        </div>
-    </div>
-</form>
+<div class="container">
+    <h2>Applications</h2>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>User name</th>
+            <th>Model auto</th>
+            <th>Manufacture date</th>
+            <th>Engine power</th>
+            <th>Start date</th>
+            <th>End date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="application : ${applications}">
+            <td th:text="${application.user.name}"></td>
+            <td th:text="${application.car.model}"></td>
+            <td th:text="${application.car.manufactureDate}"></td>
+            <td th:text="${application.car.enginePower}"></td>
+            <td th:text="${application.startTime}"></td>
+            <td th:text="${application.endTime}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
 

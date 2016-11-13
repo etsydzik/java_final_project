@@ -30,14 +30,14 @@ public class UserRepositoryTest {
         User expectedUser = new User();
         expectedUser.setId(1L);
         expectedUser.setName("eugene");
-        expectedUser.setLogin("tyger");
-        expectedUser.setPassword("2222");
+        expectedUser.setLogin("eugene");
+        expectedUser.setPassword("1111");
         Assertions.assertThat(user).isEqualTo(expectedUser);
     }
 
     @Test
     public void testIfUserExist() {
-        Assertions.assertThat(userRepository.loginExists("tyger")).isTrue();
+        Assertions.assertThat(userRepository.loginExists("eugene")).isTrue();
     }
 
     @Test
@@ -47,12 +47,12 @@ public class UserRepositoryTest {
 
     @Test
     public void testFindByLoginAndPassword() {
-        User user = userRepository.findByLoginAndPassword("tyger", "2222");
+        User user = userRepository.findByLoginAndPassword("eugene", "1111");
         User expectedUser = new User();
         expectedUser.setId(1L);
         expectedUser.setName("eugene");
-        expectedUser.setLogin("tyger");
-        expectedUser.setPassword("2222");
+        expectedUser.setLogin("eugene");
+        expectedUser.setPassword("1111");
         Assertions.assertThat(user).isEqualTo(expectedUser);
     }
 

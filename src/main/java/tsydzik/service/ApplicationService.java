@@ -8,6 +8,7 @@ import tsydzik.data.Application;
 import tsydzik.data.Car;
 import tsydzik.repository.ApplicationRepository;
 import tsydzik.repository.CarRepository;
+import tsydzik.repository.UserRepository;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -23,11 +24,17 @@ public class ApplicationService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationService.class);
 
-    @Autowired
-    private ApplicationRepository applicationRepository;
+    private final ApplicationRepository applicationRepository;
+    private final UserRepository userRepository;
 
     @Autowired
     private CarRepository carRepository;
+
+    @Autowired
+    public ApplicationService(ApplicationRepository applicationRepository, UserRepository userRepository) {
+        this.applicationRepository = applicationRepository;
+        this.userRepository = userRepository;
+    }
 
     /**
      * @param modelAuto
@@ -39,7 +46,8 @@ public class ApplicationService {
     public Application createApplication(String modelAuto,
                                          Integer manufactureDate,
                                          Double enginePower,
-                                         String exploitationTime) {
+                                         String exploitationTime,
+                                         String username) {
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
@@ -59,9 +67,8 @@ public class ApplicationService {
         application.setStartTime(startTime);
         application.setEndTime(endTime);
 
-//        application.setUser(user);
-//        return applicationRepository.save(application);
-        return null;
+        application.setUser(userRepository.findByLogin(username));
+        return applicationRepository.save(application);
     }
 
     public Date parseDate(String dateString) {
@@ -72,5 +79,10 @@ public class ApplicationService {
             LOGGER.error("Fail to parse date. Date {}", dateString, e);
         }
         return null;
+    }
+
+    public Iterable<Application> findAll() {
+        Iterable<Application> applications = applicationRepository.findAll();
+        return applications;
     }
 }

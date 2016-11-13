@@ -1,10 +1,14 @@
 package tsydzik.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import tsydzik.data.Application;
 import tsydzik.service.ApplicationService;
 
 
@@ -31,12 +35,13 @@ public class ApplicationController {
 
     @RequestMapping(method = RequestMethod.POST)
     public String create(@RequestParam String modelAuto,
-                                    @RequestParam Integer manufactureDate,
-                                    @RequestParam Double enginePower,
-                                    @RequestParam String exploitationTime) {
+                         @RequestParam Integer manufactureDate,
+                         @RequestParam Double enginePower,
+                         @RequestParam String exploitationTime,
+                         @AuthenticationPrincipal String username) {
 
-        applicationService.createApplication(modelAuto, manufactureDate, enginePower, exploitationTime);
-        return "redirect:/application?created";
+        applicationService.createApplication(modelAuto, manufactureDate, enginePower, exploitationTime, username);
+        return "redirect:/applications?created";
     }
 
     @RequestMapping(method = RequestMethod.GET, params = "created")
@@ -44,9 +49,11 @@ public class ApplicationController {
         return "application_created";
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @RequestMapping(method = RequestMethod.GET)
-    public String showAll() {
-        return "list_applications";
+    public ModelAndView showAll() {
+        Iterable<Application> applications = applicationService.findAll();
+        ModelAndView modelAndView = new ModelAndView("list_applications");
+        return modelAndView.addObject("applications", applications);
     }
-
 }
