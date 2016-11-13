@@ -11,10 +11,49 @@
 
 <form class="form-horizontal">
     <div class="form-group">
-        <label class="col-md-4 control-label" for="buttonLogin"></label>
-        <div class="col-md-8">
-            <a href="/application" id="buttonLogin" name="button1id" class="btn btn-primary">Login</a>
-            <a href="/register" id="buttonRegister" name="buttonRegister" class="btn btn-primary">Register</a>
+        <label class="col-md-4 control-label" for="modelAuto">Model auto</label>
+        <div class="col-md-4">
+            <input id="modelAuto" name="modelAuto" type="text" placeholder="Model auto" class="form-control input-md"/>
+            <span class="help-block">Enter the desired model auto</span>
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="manufactureDate">Manufacture date</label>
+        <div class="col-md-4">
+            <input id="manufactureDate" name="manufactureDate" type="text" placeholder="Manufacture date"
+                   class="form-control input-md" required=""/>
+            <span class="help-block">Enter the desired manufacture date</span>
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="enginePower">Engine power</label>
+        <div class="col-md-4">
+            <input id="enginePower" name="enginePower" type="text" placeholder="Engine power"
+                   class="form-control input-md" required=""/>
+            <span class="help-block">Enter the desired engine power</span>
+        </div>
+    </div>
+
+    <!-- Text input-->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="daysToUse">Days to use</label>
+        <div class="col-md-4">
+            <input id="daysToUse" name="daysToUse" type="text" placeholder="Days to use" class="form-control input-md"
+                   required=""/>
+            <span class="help-block">Enter days to use</span>
+        </div>
+    </div>
+
+    <!-- Button -->
+    <div class="form-group">
+        <label class="col-md-4 control-label" for="submitApplication"></label>
+        <div class="col-md-4">
+            <button id="submitApplication" name="submitApplication" class="btn btn-primary">Submit application
+            </button>
         </div>
     </div>
 </form>
