@@ -9,19 +9,19 @@
 </head>
 <body>
 
-<form class="form-horizontal">
+<form class="form-horizontal" action="/register" method="post">
 
     <div class="form-group">
         <label class="col-md-4 control-label" for="name">Name</label>
         <div class="col-md-2">
-            <input id="name" name="login" type="text" placeholder="name" class="form-control input-md"
+            <input id="name" name="name" type="text" placeholder="name" class="form-control input-md"
                    required=""/>
         </div>
     </div>
     <div class="form-group">
         <label class="col-md-4 control-label" for="login">Login</label>
         <div class="col-md-2">
-            <input id="login" name="textinput" type="text" placeholder="login" class="form-control input-md"
+            <input id="login" name="login" type="text" placeholder="login" class="form-control input-md"
                    required=""/>
         </div>
     </div>
@@ -35,7 +35,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="buttonLogin"></label>
         <div class="col-md-8">
-            <button id="buttonLogin" name="buttonLogin" class="btn btn-primary">Login</button>
+            <button type="submit" id="buttonLogin" name="buttonLogin" class="btn btn-primary">Login</button>
         </div>
     </div>
 </form>

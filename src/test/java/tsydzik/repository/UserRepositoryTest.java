@@ -35,5 +35,14 @@ public class UserRepositoryTest {
         Assertions.assertThat(user).isEqualTo(expectedUser);
     }
 
+    @Test
+    public void testIfUserExist() {
+        Assertions.assertThat(userRepository.loginExists("tyger")).isTrue();
+    }
+
+    @Test
+    public void testIfUserNotExist() {
+        Assertions.assertThat(userRepository.loginExists("asdf")).isFalse();
+    }
 }
 
