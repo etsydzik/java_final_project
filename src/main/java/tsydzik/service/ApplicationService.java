@@ -9,6 +9,7 @@ import tsydzik.data.Car;
 import tsydzik.repository.ApplicationRepository;
 import tsydzik.repository.CarRepository;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,7 +41,10 @@ public class ApplicationService {
                                          Double enginePower,
                                          String exploitationTime) {
 
-        String stringStartTime = "2016-11-14";
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        String stringStartTime = dateFormat.format(date);
+
         Date startTime = parseDate(stringStartTime);
         Date endTime = parseDate(exploitationTime);
         Application application = new Application();

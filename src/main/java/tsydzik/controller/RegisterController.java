@@ -15,8 +15,12 @@ import tsydzik.service.UserService;
 @Controller
 public class RegisterController {
 
+    private final UserService userService;
+
     @Autowired
-    private UserService userService;
+    public RegisterController(UserService userService) {
+        this.userService = userService;
+    }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String showRegisterForm() {
@@ -29,7 +33,7 @@ public class RegisterController {
                            @RequestParam String password) {
         try {
             userService.createUser(name, login, password);
-            return "redirect:application";
+            return "redirect:login";
         } catch (UserExistsException e) {
             return "redirect:register";
         }

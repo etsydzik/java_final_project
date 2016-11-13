@@ -16,8 +16,12 @@ import tsydzik.service.ApplicationService;
 public class ApplicationController {
 
 
+    private final ApplicationService applicationService;
+
     @Autowired
-    private ApplicationService applicationService;
+    public ApplicationController(ApplicationService applicationService) {
+        this.applicationService = applicationService;
+    }
 
     @RequestMapping(value = "/application", method = RequestMethod.GET)
     public String showApplicationForm() {
