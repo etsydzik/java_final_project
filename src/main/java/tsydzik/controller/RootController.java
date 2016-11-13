@@ -1,6 +1,5 @@
 package tsydzik.controller;
 
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +14,9 @@ public class RootController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String redirect(@AuthenticationPrincipal String user) {
-        if (user.equals("admin")){
-            return "redirect:/application";
+        if (user.equals("admin")) {
+            return "redirect:/applications";
         }
-        return "redirect:/application";
+        return "redirect:/applications/new";
     }
 }

@@ -13,6 +13,7 @@ import tsydzik.service.ApplicationService;
  * @since 13.11.16.
  */
 @Controller
+@RequestMapping("/applications")
 public class ApplicationController {
 
 
@@ -23,13 +24,13 @@ public class ApplicationController {
         this.applicationService = applicationService;
     }
 
-    @RequestMapping(value = "/application", method = RequestMethod.GET)
-    public String showApplicationForm() {
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String showForm() {
         return "application";
     }
 
-    @RequestMapping(value = "/application", method = RequestMethod.POST)
-    public String createApplication(@RequestParam String modelAuto,
+    @RequestMapping(method = RequestMethod.POST)
+    public String create(@RequestParam String modelAuto,
                                     @RequestParam Integer manufactureDate,
                                     @RequestParam Double enginePower,
                                     @RequestParam String exploitationTime) {
@@ -38,9 +39,14 @@ public class ApplicationController {
         return "redirect:/application?created";
     }
 
-    @RequestMapping(value = "/application", method = RequestMethod.GET, params = "created")
-    public String showApplicationCreated() {
+    @RequestMapping(method = RequestMethod.GET, params = "created")
+    public String showCreated() {
         return "application_created";
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String showAll() {
+        return "list_applications";
     }
 
 }
